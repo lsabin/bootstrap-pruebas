@@ -33,7 +33,7 @@ $(document).ready(function(){
 	      }
 	    },
 	    highlight: function(label) {
-	    	$(label).closest('.control-group').addClass('error');
+	    	$(label).closest('.control-group').removeClass('success').addClass('error');
 	    },
 	    success: function(label) {
 	    	label
