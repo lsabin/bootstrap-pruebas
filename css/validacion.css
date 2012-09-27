@@ -1,0 +1,25 @@
+#formulario label.error {
+  background:url("../img/Stop.png") no-repeat 0px 0px;
+  padding-left: 32px;
+  padding-bottom: 2px;
+  padding-top:5px;
+  display:block;
+  height:30px;
+  font-weight: bold;
+  color: #EA5200;
+  font-size:10px;
+/*  float:right;
+  margin-right:60px;
+  margin-top:-20px;*/
+}
+
+#formulario label.success {
+  background:url("../img/Select.png") no-repeat 0px 0px;
+/*  margin-right:220px;*/
+}
+
+#formulario .success_msg {
+  font-weight: bold;
+  color: #0060BF;
+  margin-left: 19px;
+}

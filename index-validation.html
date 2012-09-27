@@ -4,6 +4,7 @@
   <title>Gaelyk</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="css/bootstrap.responsive.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/validacion.css" />
   <script type="text/javascript" src="js/jquery-1.7.2.min.js">
   </script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -45,15 +46,19 @@
 
   <fieldset>
     <legend>Legend text</legend>
+
+
+
+
+
     <div class="control-group">
       
       <label class="control-label" for="nombre">Nombre</label> 
       <div class="controls">
         <input type="text" class="input-xlarge" id="nombre" name="nombre">
         <span class="help-inline"></span>
-        <p class="help-block">Supporting help text</p>
       </div>
-    </div>
+    </div>    
 
 
     <div class="control-group">
@@ -66,7 +71,6 @@
       </div>
     </div>
 
-
     <div class="control-group">
       
       <label class="control-label" for="contrasinal">Contrasinal</label> 
@@ -75,7 +79,10 @@
         <span class="help-inline"></span>
         
       </div>
-    </div>
+    </div>    
+
+
+
 
     <div class="control-group">
       
@@ -84,7 +91,11 @@
         <input type="text" class="input-xlarge" id="correo" name="correo">
         <span class="help-inline"></span>
       </div>
-    </div>        
+    </div>   
+
+
+
+     
 
     <div class="control-group">
       <div class="controls">
@@ -102,7 +113,10 @@
   </div>
 
 
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js" type="text/javascript"></script>
+<!--
+<script src="js/jquery.validate-1.6.js" type="text/javascript"></script>
+-->
+<script src="js/jquery.validate-1.9.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
@@ -110,29 +124,65 @@ jQuery(function() {
 
   
     var validator = jQuery("#formulario").validate({
-        rules: {
-            contrasinal: {
-              required:true,  
-              maxlength:250
+
+      debug:true,
+      focusCleanup:false,
+
+
+      rules: {
+
+            nombre:{
+              required: true
+            },        
+            usuario: {
+              required: true
             },
-            correo: "required"
+            correo: {
+              required: true
+            },
+            contrasinal: {
+              required: true
+            }
+
+            
         },
+
+/*
+        rules: {
+            correo: "required",
+            usuario: "required",
+            contrasinal: "required",
+            nombre: "required"
+            
+        },*/
+
+        /*
         messages: {
 
+          nombre: {
+            required: "Campo obligatorio"
+          },
+
+          usuario: {
+            required: "Campo obligatorio"
+          },
+
           contrasinal: {
-             required:"Este campo e requirido",
-            },
+             required: "Este campo e requirido"
+          },
           correo: {
-                     required:"Este campo e requirido",
-                 maxlength:"Non podes pasar dos 250 caracteres"
-            }
-        },
+              required: "Este campo e requirido"
+          }
+
+        },*/
+
+        validClass: 'success',
         // the errorPlacement has to take the table layout into account
         errorPlacement: function(error, element) {
 
 
-          element.parent().parent().removeClass('success');
-          element.parent().parent().addClass('error');
+          //element.parent().parent().removeClass('success');
+          //element.parent().parent().addClass('error');
 
             if ( element.is(":radio") )
                 error.appendTo( element.parent().next().next() );
@@ -150,13 +200,31 @@ jQuery(function() {
         // set this class to error-labels to indicate valid fields
         success: function(label) {
             // set &nbsp; as text for IE
-            label.html("&nbsp;").addClass("checked");
+            label.html("&nbsp;").addClass("success");
 
-            label.parent().parent().parent().addClass('success');
-            label.parent().parent().parent().removeClass('error');
+            //label.parent().parent().parent().addClass('success');
+            //label.parent().parent().parent().removeClass('error');
 
         }
+
+
+  /*highlight: function(element, errorClass, validClass) {
+     jQuery(element).addClass(errorClass).removeClass(validClass);
+     jQuery(element.form).find("label[for=" + element.id + "]")
+                    .addClass(errorClass);
+  },
+  unhighlight: function(element, errorClass, validClass) {
+     jQuery(element).removeClass(errorClass).addClass(validClass);
+     jQuery(element.form).find("label[for=" + element.id + "]")
+                    .removeClass(errorClass);
+  }*/        
+
+
+
     });
+
+
+
     
 }); 
     
